@@ -5,14 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Home_2;
+using Diplom;
 
 /*Inputs - Проверить на возможность ввести различные цифровые и
 нецифровые значения, используя Keys.ARROW_UP И
 Keys.ARROW_DOWN
 i.
 Локатор By.tagName(“input”)*/
-namespace Home_2
+namespace Diplom
 {
     public class Inputs:BaseTest
     {

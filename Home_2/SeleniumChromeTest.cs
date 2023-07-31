@@ -1,4 +1,4 @@
-namespace Home_2
+namespace Diplom
 {
     public class SeleniumChromeTest:BaseTest
     {

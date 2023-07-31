@@ -1,4 +1,4 @@
-﻿using Home_2;
+﻿using Diplom;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 что он выбран
 i.
 Локатор By.id(“dropdown”)*/
-namespace Home_2
+namespace Diplom
 {
     public class DropDown: BaseTest
     {

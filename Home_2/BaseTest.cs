@@ -11,7 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 
-namespace Home_2
+namespace Diplom
 
 {
     [TestFixture]

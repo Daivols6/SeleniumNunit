@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 /**Sortable Data Tables - Проверить содержимое нескольких (3-5) ячеек
 таблицы.Использовать xpath типа //table//tr[1]//td[1] - получение первой
 ячейки из первого ряда первой таблицы и так далее*/
-namespace Home_2
+namespace Diplom
 {
     public class SortableDataTables : BaseTest
     {

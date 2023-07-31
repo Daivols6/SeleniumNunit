@@ -8,7 +8,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 
-namespace Home_2
+namespace Diplom
 {
     public class AddRemoved : BaseTest
     {

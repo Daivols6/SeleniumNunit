@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 первый чекбокс, проверить что он checked. Проверить, что второй
 чекбокс checked, сделать unheck, проверить, что он unchecked
 Локатор By.cssSelector(“[type=checkbox]”)*/
-namespace Home_2
+namespace Diplom
 {
     public class Checkboxes:BaseTest
     {
