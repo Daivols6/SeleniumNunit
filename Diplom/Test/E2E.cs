@@ -1,5 +1,5 @@
 ﻿using Diplom.Diplom.PageObject;
-using Diplom.SeleniumTests.Diplom;
+using DIPLOM.Diplom.PageObject;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -7,16 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Diplom.Diplom.Test
+namespace DIPLOM.Diplom.Test
 {
-    internal class ErrorUser: BaseTests
+    internal class E2E
     {
         [Test]
-        public void ErrorUserTest()
+        public void End2End()
         {
-            new LoginPage(driver)
-            .OpenPage()
-            .ErrorUser();
+            new LoginPage()
+                .OpenPage();
+            new HomePage().GoToShoppingCart();
         }
     }
 }

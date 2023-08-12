@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using DIPLOM.Diplom.Core;
+using DIPLOM.Diplom.Core.Elements;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -10,16 +12,15 @@ namespace Diplom.Diplom.PageObject
 {
     internal class LoginPage : BasePage
     {
-
+        
         private By UserNameInput = By.Id("email");
         private By PasswordInput = By.Id("passwd");
         private By ErrorMessage = By.CssSelector(".alert-danger");
         private By LoginButton = By.CssSelector(".icon-lock");
 
         public const string url = "http://prestashop.qatestlab.com.ua/ru/authentication";
-        public const string Standart_user_name = "testRoman@email.ru";
-        public const string Standart_user_password = "12345";
-        public LoginPage(WebDriver webDriver) : base(webDriver)
+
+        public LoginPage() : base()
         {
         }
         public override LoginPage OpenPage()
@@ -29,8 +30,8 @@ namespace Diplom.Diplom.PageObject
         }
         public LoginPage LoginAsStandartUser()
         {
-            driver.FindElement(UserNameInput).SendKeys(Standart_user_name);
-            driver.FindElement(PasswordInput).SendKeys(Standart_user_password);
+            driver.FindElement(UserNameInput).SendKeys(UserBuilder.GetStandartUser().Name);
+            driver.FindElement(PasswordInput).SendKeys(UserBuilder.GetStandartUser().Password);
             driver.FindElement(LoginButton).Click();
             try
             {
@@ -42,13 +43,13 @@ namespace Diplom.Diplom.PageObject
                 // Если элемент не найден, то вызываем AssertionException
                 Assert.Fail("Элемент не найден на странице");
             }
-            return new LoginPage(driver);
+            return new LoginPage();
         }
 
-        public LoginPage ErrorUser()
+        public LoginPage RandomUser()
         {
-            driver.FindElement(UserNameInput).SendKeys("testRoman@em.dd");
-            driver.FindElement(PasswordInput).SendKeys("12345");
+            driver.FindElement(UserNameInput).SendKeys(UserBuilder.GetRandomUser().Name);
+            driver.FindElement(PasswordInput).SendKeys(UserBuilder.GetRandomUser().Password);
             driver.FindElement(LoginButton).Click();
             try
             {
@@ -62,7 +63,27 @@ namespace Diplom.Diplom.PageObject
                 // Если элемент не найден, то вызываем AssertionException
                 Assert.Fail("Элемент не найден на странице");
             }
-            return new LoginPage(driver);
+            return new LoginPage();
+        }
+
+        public LoginPage StandartUserWithoutName()
+        {
+            driver.FindElement(UserNameInput).SendKeys(UserBuilder.GetStandartUserWithoutName()?.Name);
+            driver.FindElement(PasswordInput).SendKeys(UserBuilder.GetStandartUserWithoutName().Password);
+            driver.FindElement(LoginButton).Click();
+            try
+            {
+                // Поиск элемента на старнице.
+                var element = driver.FindElement(ErrorMessage);
+                var displayed = element.Displayed;
+                Assert.IsNotNull(displayed);
+            }
+            catch (NoSuchElementException)
+            {
+                // Если элемент не найден, то вызываем AssertionException
+                Assert.Fail("Элемент не найден на странице");
+            }
+            return new LoginPage();
         }
     }
 }

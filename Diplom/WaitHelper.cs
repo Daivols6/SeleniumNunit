@@ -14,6 +14,6 @@ namespace Diplom.Diplom
         {
             new WebDriverWait(driver, TimeSpan.FromSeconds(time)).Until(element => element.FindElement(by).Text.ToLower());
         }
-        
+
     }
 }

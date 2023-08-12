@@ -1,4 +1,5 @@
-﻿using Diplom.Diplom.PageObject;
+﻿using Diplom.Diplom.Core;
+using Diplom.Diplom.PageObject;
 using Diplom.SeleniumTests.Diplom;
 using NUnit.Framework;
 using System;
@@ -9,14 +10,16 @@ using System.Threading.Tasks;
 
 namespace Diplom.Diplom.Test
 {
-    internal class LoginTest: BaseTests
+    internal class LoginTest : BaseTests
     {
         [Test]
         public void LoginStandartUser()
         {
-            new LoginPage(driver)
+            /*Browser.Instatce.NavigateToUrl("");*/
+            new LoginPage()
             .OpenPage()
             .LoginAsStandartUser();
+            Thread.Sleep(1000);
         }
     }
 }
