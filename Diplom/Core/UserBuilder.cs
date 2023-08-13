@@ -22,8 +22,25 @@ namespace DIPLOM.Diplom.Core
         {
             return new UserModel
             {
-                Name = Faker.Internet.Email(),
+                Email = Faker.Internet.Email(),
                 Password = Faker.Phone.Number(),
+            };
+        }
+        public static UserModel GetUser()
+        {
+            return new UserModel
+            {
+                Email = Faker.Internet.Email(),
+                Password = Faker.Phone.Number(),
+            };
+        }
+        public static UserModel GetNewUser()
+        {
+            return new UserModel
+            {
+                FirstName = Faker.Name.First(),
+                LastName = Faker.Name.Last(),
+                Password = Faker.Address.UkPostCode(),
             };
         }
         public static UserModel GetStandartUserWithoutName()
@@ -41,10 +58,11 @@ namespace DIPLOM.Diplom.Core
                 FirstName = Faker.Name.First(),
                 LastName = Faker.Name.Last(),
                 Address = Faker.Address.StreetSuffix(),
-                Zip = Faker.Address.ZipCode(),
+                Zip = Faker.RandomNumber.Next(10000,99999).ToString(),
                 City = Faker.Address.City(),
                 Homephone = Faker.Phone.Number(),
                 Mobilephone = Faker.Phone.Number(),
+                AddressTitle = Faker.Address.StreetAddress(),
             };
         }
     }

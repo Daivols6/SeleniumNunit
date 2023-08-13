@@ -1,6 +1,6 @@
 ﻿using Diplom.Diplom.Core;
 using Diplom.Diplom.PageObject;
-using Diplom.SeleniumTests.Diplom;
+using DIPLOM.Diplom.Core;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;

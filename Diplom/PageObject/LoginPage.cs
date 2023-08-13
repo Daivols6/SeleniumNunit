@@ -12,11 +12,14 @@ namespace Diplom.Diplom.PageObject
 {
     internal class LoginPage : BasePage
     {
-        
+
         private By UserNameInput = By.Id("email");
         private By PasswordInput = By.Id("passwd");
         private By ErrorMessage = By.CssSelector(".alert-danger");
         private By LoginButton = By.CssSelector(".icon-lock");
+        private By Logout = By.ClassName("logout");
+        private By Account = By.ClassName("account");
+        private By ShoppingCart = By.ClassName("shopping_cart");
 
         public const string url = "http://prestashop.qatestlab.com.ua/ru/authentication";
 
@@ -28,6 +31,10 @@ namespace Diplom.Diplom.PageObject
             driver.Navigate().GoToUrl(url);
             return this;
         }
+/*        public void ClickToLogin()
+        {
+            UserName.ElementGet.Click();
+        }*/
         public LoginPage LoginAsStandartUser()
         {
             driver.FindElement(UserNameInput).SendKeys(UserBuilder.GetStandartUser().Name);

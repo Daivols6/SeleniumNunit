@@ -1,5 +1,8 @@
-﻿using Diplom.Diplom.Core;
+﻿using Bogus;
+using Diplom.Diplom.Core;
+using Faker;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +13,8 @@ namespace DIPLOM.Diplom.Core.Elements
 {
     public class BaseElement
     {
-        protected IWebDriver WebDriver => Browser.Instatce.Driver;
-        public IWebDriver GetElement() => (IWebDriver)WebDriver.FindElement(locator);
+        public IWebDriver WebDriver => Browser.Instatce.Driver;
+        public IWebElement GetElement() => WebDriver.FindElement(locator);
         protected By locator;
 
 
@@ -24,9 +27,11 @@ namespace DIPLOM.Diplom.Core.Elements
             this.locator = locator;
         }
 
-        public void Select(string option) 
+        public BaseElement()
         {
-/*            Browser.Instatce.Driver.FindElements(Locator).Click();*/
         }
+
+
+
     }
 }

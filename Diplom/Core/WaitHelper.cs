@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Diplom.Diplom
+namespace DIPLOM.Diplom.Core
 {
     internal class WaitHelper
     {

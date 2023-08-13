@@ -12,11 +12,18 @@ namespace DIPLOM.Diplom.Test
     internal class E2E
     {
         [Test]
-        public void End2End()
+        public void End2EndCheckout()
         {
-            new LoginPage()
-                .OpenPage();
+            new LoginPage().OpenPage();
+            new RegistrationPageWithBaseElement().NewUser();
+            /*new LoginPage().LoginAsStandartUser();*/
+            new HomePage().GoHomePage();
             new HomePage().GoToShoppingCart();
+            new RegistrationPage().EnterAddressforUser();
+            new Adresses().Checkout();
+            new ShippingPage().AgreeAndCheckout();
+
+
         }
     }
 }

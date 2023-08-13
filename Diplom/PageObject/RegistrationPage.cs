@@ -1,21 +1,11 @@
-﻿using Diplom.Diplom.Core;
-using Diplom.Diplom.PageObject;
-using DIPLOM.Diplom;
+﻿using Diplom.Diplom.PageObject;
 using DIPLOM.Diplom.Core;
-using DIPLOM.Diplom.PageObject;
-using Faker;
-using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DIPLOM.Diplom.PageObject
 {
-   internal class RegistrationPage: BasePage
+    internal class RegistrationPage: BasePage
     {
         private By Mobilephone = By.Id("phone_mobile");
         private By Homephone = By.Id("phone");
@@ -27,6 +17,7 @@ namespace DIPLOM.Diplom.PageObject
         private By State = By.XPath("//*[@id='id_state']");
         private By Country = By.XPath("//*[@id='id_country']");
         private By SaveAndContinue = By.Id("submitAddress");
+        private By addressTitle = By.CssSelector("#alias");
 
 
         public string URL = "http://prestashop.qatestlab.com.ua/ru/";
@@ -35,13 +26,9 @@ namespace DIPLOM.Diplom.PageObject
         public RegistrationPage() : base()
         {
         }
-        public RegistrationPage LoginAsStandartUser()
+        public RegistrationPage EnterAddressforUser()
         {
-            /*            IWebElement stateElement = driver.FindElement(State);*/
-            /*            IWebElement countryElement = driver.FindElement(Country);*/
 
-            /*            SelectElement selectState = new SelectElement(stateElement);*/
-            /*            SelectElement selectCountry = new SelectElement(countryElement);*/
 
             var select = new SelectElement(driver.FindElement(Country));
             select.SelectByIndex(0);
@@ -49,16 +36,17 @@ namespace DIPLOM.Diplom.PageObject
             var Digit = random.Next(1, 7);
             var selectState = new SelectElement(driver.FindElement(State));
             selectState.SelectByIndex(Digit);
+            var user = UserBuilder.GetDataUserForRegistration();
+            driver.FindElement(FirstName).SendKeys(user.FirstName);
+            driver.FindElement(LastName).SendKeys(user.LastName);
+            driver.FindElement(Address).SendKeys(user.Address);
+            driver.FindElement(Zip).SendKeys(user.Zip);
+            driver.FindElement(City).SendKeys(user.City);
+            driver.FindElement(Homephone).SendKeys(user.Homephone);
+            driver.FindElement(Mobilephone).SendKeys(user.Mobilephone);
+            driver.FindElement(addressTitle).SendKeys(user.AddressTitle);
+            driver.FindElement(SaveAndContinue).Click();
 
-            driver.FindElement(FirstName).SendKeys(Faker.Name.First());
-            driver.FindElement(LastName).SendKeys(Faker.Name.Last());
-            driver.FindElement(Address).SendKeys(Faker.Address.StreetAddress());
-            driver.FindElement(Zip).SendKeys($"{Faker.RandomNumber.Next(10000,50000)}");
-            driver.FindElement(City).SendKeys(Faker.Address.City());
-            driver.FindElement(Homephone).SendKeys(Faker.Phone.Number());
-            driver.FindElement(Mobilephone).SendKeys(Faker.Phone.Number());
-/*            selectState.SelectByIndex(select);
-            selectCountry.SelectByIndex(select);*/
 
             return new RegistrationPage();
         }

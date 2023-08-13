@@ -1,5 +1,6 @@
 ﻿using Diplom.Diplom.PageObject;
 using DIPLOM.Diplom.Core;
+using DIPLOM.Diplom.PageObject;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -9,17 +10,13 @@ using System.Threading.Tasks;
 
 namespace DIPLOM.Diplom.Test
 {
-    internal class StandartUserWithoutName: BaseTests
+    internal class CreateNewUser:BaseTests
     {
-
         [Test]
-        public void LoginStandartUser()
+        public void CreateUser()
         {
-            /*Browser.Instatce.NavigateToUrl("");*/
-            new LoginPage()
-            .OpenPage()
-            .StandartUserWithoutName();
-            Thread.Sleep(1000);
+            new LoginPageWithBaseElement()
+                .CreateNewUser();
         }
     }
 }

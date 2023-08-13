@@ -67,7 +67,7 @@ namespace Diplom.Diplom.Core
         public void CloseBrowser()
         {
             driver?.Dispose();
-            /*   driver?.Quit();*/
+
             instance = null;
         }
 

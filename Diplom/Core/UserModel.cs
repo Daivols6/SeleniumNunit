@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DIPLOM.Diplom
+namespace DIPLOM.Diplom.Core
 {
     public class UserModel
     {
@@ -17,5 +17,7 @@ namespace DIPLOM.Diplom
         public string City { get; set; }
         public string Homephone { get; set; }
         public string Mobilephone { get; set; }
+        public string Email { get; set; }
+        public string AddressTitle { get; set; }
     }
 }

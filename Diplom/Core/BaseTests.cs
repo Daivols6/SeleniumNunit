@@ -4,7 +4,7 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
-namespace Diplom.SeleniumTests.Diplom
+namespace DIPLOM.Diplom.Core
 {
     public class BaseTests
     {
