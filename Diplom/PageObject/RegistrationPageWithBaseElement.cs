@@ -1,9 +1,11 @@
 ﻿using Diplom.Diplom.Core;
 using Diplom.Diplom.PageObject;
 using DIPLOM.Diplom.Core;
+using DIPLOM.Diplom.Core.Configuration;
 using DIPLOM.Diplom.Core.Elements;
 using DIPLOM.Diplom.PageObject;
 using Faker;
+using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
@@ -38,25 +40,36 @@ namespace DIPLOM.Diplom.PageObject
         public RegistrationPageWithBaseElement() : base()
         {
         }
+        [AllureStep]
         public RegistrationPageWithBaseElement NewUser()
         {
-            new LoginPageWithBaseElement()
-                .CreateNewUser();
+            AllureHelper.ScreenShot();
+            new LoginPageWithBaseElement().CreateNewUser();
+            AllureHelper.ScreenShot();
             Gender.GetElement().Click();
+            AllureHelper.ScreenShot();
             LastName.GetElement().SendKeys(newUser.LastName);
+            AllureHelper.ScreenShot();
             FirstName.GetElement().SendKeys(newUser.FirstName);
+            AllureHelper.ScreenShot();
             Password.GetElement().SendKeys(newUser.Password);
-            new DropDown().SelectByValue(Days,"2");
+            AllureHelper.ScreenShot();
+            new DropDown().SelectByValue(Days, "2");
+            AllureHelper.ScreenShot();
             new DropDown().SelectByIndexNumber(Months, 4);
+            AllureHelper.ScreenShot();
             new DropDown(Years).SelectDivList(31);
+            AllureHelper.ScreenShot();
 
             SaveAndContinue.GetElement().Click();
+            AllureHelper.ScreenShot();
             try
             {
                 // Поиск элемента на старнице.
                 var element = driver.FindElement(AlertCreateAccount);
-                var displayed = element.Displayed;
-                Assert.IsNotNull(displayed);
+
+
+                Assert.IsTrue(element.Displayed);
             }
             catch (NoSuchElementException)
             {
@@ -65,7 +78,7 @@ namespace DIPLOM.Diplom.PageObject
             }
             return new RegistrationPageWithBaseElement();
         }
-
+        [AllureStep]
         public override BasePage OpenPage()
         {
             driver.Navigate().GoToUrl(URL);

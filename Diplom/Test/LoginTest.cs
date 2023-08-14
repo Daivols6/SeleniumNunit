@@ -15,7 +15,6 @@ namespace Diplom.Diplom.Test
         [Test]
         public void LoginStandartUser()
         {
-            /*Browser.Instatce.NavigateToUrl("");*/
             new LoginPage()
             .OpenPage()
             .LoginAsStandartUser();

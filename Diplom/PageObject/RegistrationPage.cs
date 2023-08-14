@@ -31,7 +31,7 @@ namespace DIPLOM.Diplom.PageObject
 
 
             var select = new SelectElement(driver.FindElement(Country));
-            select.SelectByIndex(0);
+            select.SelectByIndex(1);
             var random = new Random();
             var Digit = random.Next(1, 7);
             var selectState = new SelectElement(driver.FindElement(State));

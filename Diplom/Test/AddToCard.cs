@@ -20,7 +20,7 @@ namespace DIPLOM.Diplom.Test
             var Home = new HomePage();
             Home.GoHomePage();
             Home.LoginAsStandartUserAndAddToCard();
-            Home.GoHomePage();
+            
 
 
 

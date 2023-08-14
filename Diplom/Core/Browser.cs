@@ -28,8 +28,7 @@ namespace Diplom.Diplom.Core
 
         private Browser()
         {
-/*            bool isHeadless = false;*/
-            //choose browser
+
             var isHeadless = bool.Parse(TestContext.Parameters?.Get("Headless"));
             var Wait = int.Parse(TestContext.Parameters?.Get("ImplicityWait"));
             var browser = TestContext.Parameters?.Get("BrowserType");
@@ -60,13 +59,13 @@ namespace Diplom.Diplom.Core
             }
 
 
-
-            driver.Manage().Window.Maximize();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(Wait);
+            driver.Manage().Window.Maximize();
+
         }
         public void CloseBrowser()
         {
-            driver?.Dispose();
+            driver.Dispose();
 
             instance = null;
         }

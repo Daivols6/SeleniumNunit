@@ -3,6 +3,7 @@ using Diplom.Diplom.PageObject;
 using DIPLOM.Diplom.Core;
 using DIPLOM.Diplom.Core.Elements;
 using Faker;
+using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
@@ -23,13 +24,15 @@ namespace DIPLOM.Diplom.PageObject
         private By AddToCart = By.XPath("//*[@id=\"add_to_cart\"]/button");
         private By AlertIframe = By.XPath("//*[@id=\"homefeatured\"]/li[2]/div/div[1]/div/a[2]/span");
 
-        
+
 
 
 
         public HomePage() : base()
         {
         }
+        
+        [AllureStep]
         public HomePage GoToShoppingCart()
         {
 
@@ -61,6 +64,7 @@ namespace DIPLOM.Diplom.PageObject
             driver.Navigate().GoToUrl(LoginPage.url);
             return this;
         }
+        [AllureStep]
         public void GoHomePage()
         {
             By Home = By.CssSelector(".banner");

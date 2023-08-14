@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NUnit.Allure.Attributes;
 
 namespace DIPLOM.Diplom.PageObject
 {
@@ -27,6 +28,7 @@ namespace DIPLOM.Diplom.PageObject
         public LoginPageWithBaseElement() : base()
         {
         }
+        [AllureStep]
         public override LoginPageWithBaseElement OpenPage()
         {
             driver.Navigate().GoToUrl(url);
