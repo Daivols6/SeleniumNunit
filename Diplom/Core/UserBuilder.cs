@@ -26,14 +26,7 @@ namespace DIPLOM.Diplom.Core
                 Password = Faker.Phone.Number(),
             };
         }
-        public static UserModel GetUser()
-        {
-            return new UserModel
-            {
-                Email = Faker.Internet.Email(),
-                Password = Faker.Phone.Number(),
-            };
-        }
+
         public static UserModel GetNewUser()
         {
             return new UserModel

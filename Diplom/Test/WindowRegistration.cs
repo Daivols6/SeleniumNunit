@@ -13,16 +13,16 @@ namespace DIPLOM.Diplom.Test
 {
     internal class WindowRegistration : BaseTests
     {
-        [Test(Description = "Login new user")]
+        [Test(Description = "New user")]
         [AllureSeverity(SeverityLevel.normal)]
         [AllureTag("Smoke Create User")]
-        [Description("More detailed Description")]
+        [Description("Tests Allure")]
         [AllureOwner("Roman")]
         [AllureSuite("Registration user")]
         [AllureSubSuite("New user")]
         [AllureTms("TMS-16")]
         [AllureIssue("JIRA-15")]
-        [AllureLink("https://google.com")]
+        [AllureLink("https://github.com/Daivols6/SeleniumNunit")]
 
         public void Create()
         {

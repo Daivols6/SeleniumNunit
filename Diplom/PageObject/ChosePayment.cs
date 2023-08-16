@@ -1,6 +1,7 @@
 ﻿using Diplom.Diplom.Core;
 using Diplom.Diplom.PageObject;
 using DIPLOM.Diplom.Core;
+using DIPLOM.Diplom.Core.Configuration;
 using Faker;
 using NUnit.Framework;
 using OpenQA.Selenium;
@@ -26,6 +27,8 @@ namespace DIPLOM.Diplom.PageObject
         public override BasePage OpenPage()
         {
             driver.Navigate().GoToUrl(LoginPage.url);
+            logger.Info($"Open page{LoginPage.url}");
+            AllureHelper.ScreenShot();
             return this;
         }
         public void CheckWarning()

@@ -40,29 +40,36 @@ namespace DIPLOM.Diplom.PageObject
         public RegistrationPageWithBaseElement() : base()
         {
         }
-        [AllureStep]
+        [AllureStep("Registration for new user")]
         public RegistrationPageWithBaseElement NewUser()
         {
-            AllureHelper.ScreenShot();
+
             new LoginPageWithBaseElement().CreateNewUser();
+            logger.Info($"Create New User");
             AllureHelper.ScreenShot();
             Gender.GetElement().Click();
             AllureHelper.ScreenShot();
             LastName.GetElement().SendKeys(newUser.LastName);
+            logger.Info($"Input Last Name");
             AllureHelper.ScreenShot();
             FirstName.GetElement().SendKeys(newUser.FirstName);
+            logger.Info($"Input First Name");
             AllureHelper.ScreenShot();
             Password.GetElement().SendKeys(newUser.Password);
+            logger.Info($"Input Password");
             AllureHelper.ScreenShot();
             new DropDown().SelectByValue(Days, "2");
+            logger.Info($"Choosing a day");
             AllureHelper.ScreenShot();
             new DropDown().SelectByIndexNumber(Months, 4);
+            logger.Info($"Choosing a Months ");
             AllureHelper.ScreenShot();
             new DropDown(Years).SelectDivList(31);
+            logger.Info($"Choosing a Years");
             AllureHelper.ScreenShot();
 
             SaveAndContinue.GetElement().Click();
-            AllureHelper.ScreenShot();
+
             try
             {
                 // Поиск элемента на старнице.
@@ -70,11 +77,15 @@ namespace DIPLOM.Diplom.PageObject
 
 
                 Assert.IsTrue(element.Displayed);
+                logger.Info($"Element found on page");
+                AllureHelper.ScreenShot();
             }
             catch (NoSuchElementException)
             {
                 // Если элемент не найден, то вызываем AssertionException
                 Assert.Fail("Элемент не найден на странице");
+                logger.Info($"Element not found on page");
+                AllureHelper.ScreenShot();
             }
             return new RegistrationPageWithBaseElement();
         }
@@ -82,6 +93,8 @@ namespace DIPLOM.Diplom.PageObject
         public override BasePage OpenPage()
         {
             driver.Navigate().GoToUrl(URL);
+            logger.Info($"Open page{URL}");
+            AllureHelper.ScreenShot();
             return this;
         }
     }

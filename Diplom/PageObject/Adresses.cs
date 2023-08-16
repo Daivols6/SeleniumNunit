@@ -1,8 +1,10 @@
 ﻿using Diplom.Diplom.Core;
 using Diplom.Diplom.PageObject;
 using DIPLOM.Diplom.Core;
+using DIPLOM.Diplom.Core.Configuration;
 using DIPLOM.Diplom.Core.Elements;
 using Faker;
+using NUnit.Allure.Attributes;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
@@ -23,15 +25,19 @@ namespace DIPLOM.Diplom.PageObject
         {
         }
 
-
+        [AllureStep]
         public override BasePage OpenPage()
         {
             driver.Navigate().GoToUrl(LoginPage.url);
+            logger.Info($"Open page{LoginPage.url}");
+            AllureHelper.ScreenShot();
             return this;
         }
         public void Checkout()
         {
             new Button(ProceedToCheckout).GetElement().Click();
+            logger.Info($"Click on button ProceedToCheckout");
+            AllureHelper.ScreenShot();
         }
     }
 }

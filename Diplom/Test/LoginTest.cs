@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Diplom.Diplom.Test
+namespace DIPLOM.Diplom.Test
 {
     internal class LoginTest : BaseTests
     {

@@ -19,12 +19,14 @@ namespace DIPLOM.Diplom.Test
         {
             new LoginPage().OpenPage();
             new RegistrationPageWithBaseElement().NewUser();
-            /*new LoginPage().LoginAsStandartUser();*/
-            new HomePage().GoHomePage();
-            new HomePage().GoToShoppingCart();
+            new HomePage().GoHomePage()
+                          .GoToShoppingCart();
             new RegistrationPage().EnterAddressforUser();
             new Adresses().Checkout();
             new ShippingPage().AgreeAndCheckout();
+            new Payment().ChoisePaymentByCheck()
+                         .AgreePayment()
+                         .CheckSuccessMessage();
 
 
         }

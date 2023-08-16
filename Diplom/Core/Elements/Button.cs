@@ -16,10 +16,6 @@ namespace DIPLOM.Diplom.Core.Elements
         public Button(string locator) : base($"[id='{locator}']")
         {
         }
-        public void ClickOnButton()
-        {
-            
-
-        }
+        
     }
 }

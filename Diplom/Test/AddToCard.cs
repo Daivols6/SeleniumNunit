@@ -17,9 +17,9 @@ namespace DIPLOM.Diplom.Test
         {
             new LoginPage().OpenPage()
                 .LoginAsStandartUser();
-            var Home = new HomePage();
-            Home.GoHomePage();
-            Home.LoginAsStandartUserAndAddToCard();
+            new HomePage()
+                .GoHomePage()
+                .LoginAsStandartUserAndAddToCard();
             
 
 
