@@ -7,11 +7,9 @@ trigger:
 - Dev
 
 pool:
-  vmImage: 'Azure Pipelines'
+  name: 'Roman'
 
 steps:
-- task: NuGetToolInstaller@1
-
 
 - task: NuGetCommand@2
   displayName: "Restore nuget package for Solution"
@@ -24,18 +22,11 @@ steps:
   inputs:
     command: 'build'
     arguments: '--configuration Debug'
+
 - task: DotNetCoreCLI@2
   displayName: "Test"
   inputs:
-    command: 'test'
+    command: 'Run test'
 
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution)'
 
-- task: VSBuild@1
-  inputs:
-    platform: 'x86'
-    solution: '$(solution)'
-    configuration: '$(buildConfiguration)'
-    msbuildArgs: '/p:AppxBundlePlatforms="$(buildPlatform)" /p:AppxPackageDir="$(appxPackageDir)" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=StoreUpload'
+- 
