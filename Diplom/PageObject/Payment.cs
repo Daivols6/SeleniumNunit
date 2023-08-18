@@ -57,23 +57,12 @@ namespace DIPLOM.Diplom.PageObject
         [AllureStep]
         public Payment CheckSuccessMessage()
         {
-            try
-            {
                 // Поиск элемента на старнице.
                 var element = driver.FindElement(successMessage);
-
-
-                Assert.IsTrue(element.Displayed);
+                Assert.IsTrue(element.Displayed, "Элемент не найден на странице");
                 logger.Info($"Element found on page");
                 AllureHelper.ScreenShot();
-            }
-            catch (NoSuchElementException)
-            {
-                // Если элемент не найден, то вызываем AssertionException
-                Assert.Fail("Элемент не найден на странице");
-                logger.Info($"Element not found on page");
-                AllureHelper.ScreenShot();
-            }
+
             return new Payment();
         }
     }

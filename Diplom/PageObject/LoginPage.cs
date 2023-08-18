@@ -51,18 +51,12 @@ namespace Diplom.Diplom.PageObject
             AllureHelper.ScreenShot();
             logger.Info($"Logining");
             driver.FindElement(LoginButton).Click();
-            try
-            {
-                logger.Info($"Check element on page");
-                var element = driver.FindElement(By.XPath("//span[text()='Roman Romanov']"));
-                AllureHelper.ScreenShot();
-            }
-            catch (NoSuchElementException)
-            {
-                logger.Info($"element not found");
-                Assert.Fail("Элемент не найден на странице");
-                AllureHelper.ScreenShot();
-            }
+
+            logger.Info($"Check element on page");
+            var element = driver.FindElement(By.XPath("//span[text()='Roman Romanov']"));
+            Assert.IsTrue(element.Displayed, "Элемент не найден на странице");
+            AllureHelper.ScreenShot();
+
             return new LoginPage();
         }
         [AllureStep("Login by a random user")]
@@ -78,22 +72,14 @@ namespace Diplom.Diplom.PageObject
             driver.FindElement(LoginButton).Click();
             logger.Info($"Logining");
             AllureHelper.ScreenShot();
-            try
-            {
-                logger.Info($"Check element on page");
-                // Поиск элемента на старнице.
-                var element = driver.FindElement(ErrorMessage);
-                var displayed = element.Displayed;
-                Assert.IsNotNull(displayed);
-                AllureHelper.ScreenShot();
-            }
-            catch (NoSuchElementException)
-            {
-                logger.Info($"element not found");
-                // Если элемент не найден, то вызываем AssertionException
-                Assert.Fail("Элемент не найден на странице");
-                AllureHelper.ScreenShot();
-            }
+
+            logger.Info($"Check element on page");
+            // Поиск элемента на старнице.
+            var element = driver.FindElement(ErrorMessage);
+            Assert.IsTrue(element.Displayed, "Элемент не найден на странице");
+            AllureHelper.ScreenShot();
+
+
             return new LoginPage();
         }
         [AllureStep("Login by a user without a name")]
@@ -107,22 +93,14 @@ namespace Diplom.Diplom.PageObject
             AllureHelper.ScreenShot();
             driver.FindElement(LoginButton).Click();
             logger.Info($"Logining");
-            try
-            {
-                logger.Info($"Check element on page");
-                // Поиск элемента на старнице.
-                var element = driver.FindElement(ErrorMessage);
-                var displayed = element.Displayed;
-                Assert.IsNotNull(displayed);
-                AllureHelper.ScreenShot();
-            }
-            catch (NoSuchElementException)
-            {
-                logger.Info($"element not found");
-                // Если элемент не найден, то вызываем AssertionException
-                Assert.Fail("Элемент не найден на странице");
-                AllureHelper.ScreenShot();
-            }
+
+            logger.Info($"Check element on page");
+            // Поиск элемента на старнице.
+            var element = driver.FindElement(ErrorMessage);
+            Assert.IsTrue(element.Displayed, "Элемент не найден на странице");
+            AllureHelper.ScreenShot();
+
+
             return new LoginPage();
         }
     }

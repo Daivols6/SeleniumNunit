@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace DIPLOM.Diplom.PageObject
 {
-    internal class RegistrationPageWithBaseElement: BasePage
+    internal class RegistrationPageWithBaseElement : BasePage
     {
 
         private Input Password = new(By.Id("passwd"));
@@ -31,7 +31,7 @@ namespace DIPLOM.Diplom.PageObject
         private By Years = By.Id("cuselFrame-years");
         private Button SaveAndContinue = new(By.Id("submitAccount"));
         private UserModel newUser = UserBuilder.GetNewUser();
-        
+
 
 
         public string URL = "http://prestashop.qatestlab.com.ua/ru/authentication?back=my-account#account-creation";
@@ -70,23 +70,15 @@ namespace DIPLOM.Diplom.PageObject
 
             SaveAndContinue.GetElement().Click();
 
-            try
-            {
-                // Поиск элемента на старнице.
-                var element = driver.FindElement(AlertCreateAccount);
+            // Поиск элемента на старнице.
+            var element = driver.FindElement(AlertCreateAccount);
 
 
-                Assert.IsTrue(element.Displayed);
-                logger.Info($"Element found on page");
-                AllureHelper.ScreenShot();
-            }
-            catch (NoSuchElementException)
-            {
-                // Если элемент не найден, то вызываем AssertionException
-                Assert.Fail("Элемент не найден на странице");
-                logger.Info($"Element not found on page");
-                AllureHelper.ScreenShot();
-            }
+            Assert.IsTrue(element.Displayed, "Элемент не найден на странице");
+            logger.Info($"Element found on page");
+            AllureHelper.ScreenShot();
+
+
             return new RegistrationPageWithBaseElement();
         }
         [AllureStep]

@@ -33,18 +33,12 @@ namespace DIPLOM.Diplom.PageObject
         }
         public void CheckWarning()
         {
-            try
-            {
-                // Поиск элемента на старнице.
-                var element = driver.FindElement(AlertWarning);
-                var displayed = element.Displayed;
-                Assert.IsNotNull(displayed);
-            }
-            catch (NoSuchElementException)
-            {
-                // Если элемент не найден, то вызываем AssertionException
-                Assert.Fail("Элемент не найден на странице");
-            }
+
+            // Поиск элемента на старнице.
+            var element = driver.FindElement(AlertWarning);
+
+            Assert.IsTrue(element.Displayed, "Элемент не найден на странице");
+
         }
     }
 }
