@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace DIPLOM.Diplom.Test
 {
-    internal class TestForAllure
+    internal class TestForAzure
     {
         [Test]
-        public void AllureTestPassed()
+        public void AzureTestPassed()
         {
             Assert.Pass();
         }
