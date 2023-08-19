@@ -12,12 +12,13 @@ using NUnit.Framework;
 
 namespace DIPLOM.Diplom.PageObject
 {
-    internal class Payment: BasePage
+    internal class Payment : BasePage
     {
         private By PaymentByBankTransfer = By.CssSelector(".bankwire");
         private By PaymentByCheck = By.CssSelector(".cheque");
         private By AgreePay = By.CssSelector("#cart_navigation > button");
         private By successMessage = By.CssSelector(".alert-success");
+        private By erorrMessage = By.CssSelector(".alert");
 
         private string url = "http://prestashop.qatestlab.com.ua/ru/order?multi-shipping=";
 
@@ -57,11 +58,24 @@ namespace DIPLOM.Diplom.PageObject
         [AllureStep]
         public Payment CheckSuccessMessage()
         {
-                // Поиск элемента на старнице.
-                var element = driver.FindElement(successMessage);
-                Assert.IsTrue(element.Displayed, "Элемент не найден на странице");
-                logger.Info($"Element found on page");
-                AllureHelper.ScreenShot();
+            // Поиск элемента на старнице.
+            var element = driver.FindElement(successMessage);
+            Assert.IsTrue(element.Displayed, "Элемент не найден на странице");
+            logger.Info($"Element found on page");
+            AllureHelper.ScreenShot();
+
+            return new Payment();
+        }
+        [AllureStep]
+        public Payment CheckErrorMessage()
+        {
+
+            // Поиск элемента на старнице.
+            var element = driver.FindElement(erorrMessage);
+            AllureHelper.ScreenShot();
+            Assert.IsTrue(element.Displayed, "Элемент не найден на странице");
+            logger.Info($"Element found on page");
+            
 
             return new Payment();
         }

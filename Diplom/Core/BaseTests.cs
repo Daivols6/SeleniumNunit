@@ -27,11 +27,8 @@ namespace DIPLOM.Diplom.Core
         [TearDown]
         public void TearDown()
         {
-            if(TestContext.CurrentContext.Result.Outcome.Status==TestStatus.Failed)
-            {
-                AllureHelper.ScreenShot();
-            }
-        
+            AllureHelper.ScreenShot();
+
             Browser.Instatce.CloseBrowser();
         }
     }

@@ -1,19 +1,10 @@
 ﻿using Diplom.Diplom.Core;
 using Diplom.Diplom.PageObject;
-using DIPLOM.Diplom.Core;
 using DIPLOM.Diplom.Core.Configuration;
 using DIPLOM.Diplom.Core.Elements;
-using Faker;
 using NUnit.Allure.Attributes;
-using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
-using OpenQA.Selenium.Support.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DIPLOM.Diplom.PageObject
 {

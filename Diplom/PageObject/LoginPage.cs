@@ -1,15 +1,8 @@
 ﻿using DIPLOM.Diplom.Core;
 using DIPLOM.Diplom.Core.Configuration;
-using DIPLOM.Diplom.Core.Elements;
-using NLog;
 using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Diplom.Diplom.PageObject
 {

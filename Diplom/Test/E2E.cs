@@ -27,8 +27,19 @@ namespace DIPLOM.Diplom.Test
             new Payment().ChoisePaymentByCheck()
                          .AgreePayment()
                          .CheckSuccessMessage();
+        }
+        [Test]
 
-
+        public void End2EndCheckoutUSA()
+        {
+            new LoginPage().OpenPage();
+            new RegistrationPageWithBaseElement().NewUser();
+            new HomePage().GoHomePage()
+                          .GoToShoppingCart();
+            new RegistrationPage().EnterAddressUSAforUser();
+            new Adresses().Checkout();
+            new ShippingPage().AgreeAndCheckout();
+            new Payment().CheckErrorMessage();
         }
     }
 }
