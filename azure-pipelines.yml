@@ -10,24 +10,11 @@ pool:
   name: 'Roman'
 
 steps:
-- task: NuGetToolInstaller@1
-
-
 - task: NuGetCommand@2
-  displayName: "Restore nuget package for Solution"
+  displayName: 'Restore nuget package for Solution'
   inputs:
     command: 'restore'
     restoreSolution: '$(solution)'
-
-- task: DotNetCoreCLI@2
-  displayName: "Build Solution"
-  inputs:
-    command: 'build'
-    arguments: '--configuration Debug'
-- task: DotNetCoreCLI@2
-  displayName: "Test"
-  inputs:
-    command: 'test'
 
 - task: DotNetCoreCLI@2
   displayName: 'Build solution'
@@ -36,7 +23,7 @@ steps:
     arguments: '--configuration Debug'
 
 - task: DotNetCoreCLI@2
-  displayName: 'Dotnet test -s BrowserSetUp.runsettings'
+  displayName: 'Dotnet test -s BrowserSetup.runsettings'
   inputs:
     command: 'test' 
-    arguments: '-s BrowserSetUp.runsettings'
+    arguments: '-s BrowserSetup.runsettings'
