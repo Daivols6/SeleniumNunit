@@ -24,8 +24,8 @@ namespace Diplom.Diplom.Core
         }
         private Browser()
         {   //Открыть браузер в полном окне с неявным ожиданием, параметры указаны в runsettings
-            var isHeadless = bool.Parse(TestContext.Parameters?.Get("Headless"));
-            var Wait = int.Parse(TestContext.Parameters?.Get("ImplicityWait"));
+            var isHeadless = bool.Parse(TestContext.Parameters?.Get("Headless") ?? "false");
+            var Wait = int.Parse(TestContext.Parameters?.Get("ImplicityWait") ?? "false");
             var browser = TestContext.Parameters?.Get("BrowserType");
             switch (browser)
             {
