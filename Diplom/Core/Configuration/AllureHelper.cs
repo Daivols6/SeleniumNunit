@@ -1,5 +1,7 @@
 ﻿using Allure.Commons;
 using Diplom.Diplom.Core;
+using NUnit.Framework.Interfaces;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -13,11 +15,14 @@ namespace DIPLOM.Diplom.Core.Configuration
     {
         private static AllureLifecycle allure = AllureLifecycle.Instance;
 
-        public static void ScreenShot()
+        public static void ScreenShotIfTestFailed()
         {
-            Screenshot screenshot = ((ITakesScreenshot)Browser.Instatce.Driver).GetScreenshot();
-            byte[] bytes = screenshot.AsByteArray;
-            allure.AddAttachment("Screenshot", "image/png", bytes);
+            if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
+            {
+                Screenshot screenshot = ((ITakesScreenshot)Browser.Instatce.Driver).GetScreenshot();
+                byte[] bytes = screenshot.AsByteArray;
+                allure.AddAttachment("Screenshot", "image/png", bytes);
+            }
         }
     }
 }

@@ -5,11 +5,10 @@ using DIPLOM.Diplom.Core.Elements;
 using NUnit.Allure.Attributes;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using System;
 
 namespace DIPLOM.Diplom.PageObject
 {
-    internal class RegistrationPage: BasePage
+    internal class RegistrationPage : BasePage
     {
         private By Mobilephone = By.Id("phone_mobile");
         private By Homephone = By.Id("phone");
@@ -22,109 +21,73 @@ namespace DIPLOM.Diplom.PageObject
         private By Country = By.XPath("//*[@id='id_country']");
         private By SaveAndContinue = By.Id("submitAddress");
         private By addressTitle = By.CssSelector("#alias");
+        private readonly int Digit = new Random().Next(1, 7);
         public string URL = "http://prestashop.qatestlab.com.ua/ru/";
-
-
         public RegistrationPage() : base()
         {
         }
         [AllureStep("Input Address for User")]
+        //Заполнение данных пользователя на вкладке YOUR ADDRESSES с указанием случайного Штата и страны под индексом 1
         public RegistrationPage EnterAddressforUser()
         {
-            var select = new SelectElement(driver.FindElement(Country));
-            select.SelectByIndex(1);
+            new DropDown().SelectByIndexNumber(Country, 1);
             logger.Info($"Choosing a country");
-            AllureHelper.ScreenShot();
-            var random = new Random();
-            var Digit = random.Next(1, 7);
-            var selectState = new SelectElement(driver.FindElement(State));
-            selectState.SelectByIndex(Digit);
+            new DropDown().SelectByIndexNumber(State, Digit);
             logger.Info($"Choosing a state");
-            AllureHelper.ScreenShot();
             var user = UserBuilder.GetDataUserForRegistration();
             logger.Info($"Getting a new user");
             driver.FindElement(FirstName).SendKeys(user.FirstName);
             logger.Info($"Input FirstName");
-            AllureHelper.ScreenShot();
             driver.FindElement(LastName).SendKeys(user.LastName);
             logger.Info($"Input LastName");
-            AllureHelper.ScreenShot();
             driver.FindElement(Address).SendKeys(user.Address);
             logger.Info($"Input Address");
-            AllureHelper.ScreenShot();
             driver.FindElement(Zip).SendKeys(user.Zip);
             logger.Info($"Input Zip");
-            AllureHelper.ScreenShot();
             driver.FindElement(City).SendKeys(user.City);
             logger.Info($"Input City");
-            AllureHelper.ScreenShot();
             driver.FindElement(Homephone).SendKeys(user.Homephone);
             logger.Info($"Input Homephone");
-            AllureHelper.ScreenShot();
             driver.FindElement(Mobilephone).SendKeys(user.Mobilephone);
             logger.Info($"Input Mobilephone");
-            AllureHelper.ScreenShot();
             driver.FindElement(addressTitle).SendKeys(user.AddressTitle);
             logger.Info($"Input AddressTitle");
-            AllureHelper.ScreenShot();
             driver.FindElement(SaveAndContinue).Click();
             logger.Info($"Click on button SaveAndContinue");
-            AllureHelper.ScreenShot();
-
-
             return new RegistrationPage();
         }
+        [AllureStep]
+        //Заполнение данных пользователя на вкладке YOUR ADDRESSES с указанием случайного Штата, страна остается выбранная по умолчанию(Index(0))
         public RegistrationPage EnterAddressUSAforUser()
         {
-            var select = new SelectElement(driver.FindElement(Country));
-            select.SelectByIndex(0);
-            logger.Info($"Choosing a country");
-            AllureHelper.ScreenShot();
-            var random = new Random();
-            var Digit = random.Next(1, 7);
-            var selectState = new SelectElement(driver.FindElement(State));
-            selectState.SelectByIndex(Digit);
+            new DropDown().SelectByIndexNumber(State, Digit);
             logger.Info($"Choosing a state");
-            AllureHelper.ScreenShot();
             var user = UserBuilder.GetDataUserForRegistration();
             logger.Info($"Getting a new user");
             driver.FindElement(FirstName).SendKeys(user.FirstName);
             logger.Info($"Input FirstName");
-            AllureHelper.ScreenShot();
             driver.FindElement(LastName).SendKeys(user.LastName);
             logger.Info($"Input LastName");
-            AllureHelper.ScreenShot();
             driver.FindElement(Address).SendKeys(user.Address);
             logger.Info($"Input Address");
-            AllureHelper.ScreenShot();
             driver.FindElement(Zip).SendKeys(user.Zip);
             logger.Info($"Input Zip");
-            AllureHelper.ScreenShot();
             driver.FindElement(City).SendKeys(user.City);
             logger.Info($"Input City");
-            AllureHelper.ScreenShot();
             driver.FindElement(Homephone).SendKeys(user.Homephone);
             logger.Info($"Input Homephone");
-            AllureHelper.ScreenShot();
             driver.FindElement(Mobilephone).SendKeys(user.Mobilephone);
             logger.Info($"Input Mobilephone");
-            AllureHelper.ScreenShot();
             driver.FindElement(addressTitle).SendKeys(user.AddressTitle);
             logger.Info($"Input AddressTitle");
-            AllureHelper.ScreenShot();
             driver.FindElement(SaveAndContinue).Click();
             logger.Info($"Click on button SaveAndContinue");
-            AllureHelper.ScreenShot();
-
-
             return new RegistrationPage();
         }
-
         public override BasePage OpenPage()
         {
             driver.Navigate().GoToUrl(URL);
             logger.Info($"Open page{URL}");
-            AllureHelper.ScreenShot();
             return this;
         }
     }

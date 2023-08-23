@@ -1,19 +1,15 @@
 ﻿using Allure.Commons;
+using Diplom.Diplom.PageObject;
 using DIPLOM.Diplom.Core;
 using DIPLOM.Diplom.PageObject;
 using NUnit.Allure.Attributes;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DIPLOM.Diplom.Test
 {
-    internal class WindowRegistration : BaseTests
+    internal class Registration_tests : BaseTests
     {
-        [Test(Description = "New user")]
+        [Test(Description = "Registration of random mail and filling in user data")]
         [AllureSeverity(SeverityLevel.normal)]
         [AllureTag("Smoke Create User")]
         [Description("Tests Allure")]
@@ -23,10 +19,22 @@ namespace DIPLOM.Diplom.Test
         [AllureTms("TMS-16")]
         [AllureIssue("JIRA-15")]
         [AllureLink("https://github.com/Daivols6/SeleniumNunit")]
-
         public void Create()
         {
             new RegistrationPageWithBaseElement().NewUser();
+        }
+        [Test(Description = "Authorization of an already created account")]
+        public void Registration()
+        {
+            new LoginPage()
+            .OpenPage()
+            .LoginAsStandartUser();
+        }
+        [Test(Description = "creating a user with a new mail")]
+        public void CreateUser()
+        {
+            new LoginPageWithBaseElement()
+                .CreateNewUser();
         }
     }
 }

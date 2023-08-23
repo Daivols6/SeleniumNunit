@@ -1,16 +1,10 @@
-﻿using Diplom.Diplom.PageObject;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NUnit.Framework;
 
 namespace DIPLOM.Diplom.Test
 {
     internal class TestForAzure
     {
-        [Test]
+        [Test(Description = "test without skinshots for AzureDevOps")]
         public void AzureTestPassed()
         {
             Assert.Pass();

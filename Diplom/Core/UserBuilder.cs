@@ -1,15 +1,10 @@
-﻿using Diplom.Diplom.PageObject;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NUnit.Framework;
 
 namespace DIPLOM.Diplom.Core
 {
     public class UserBuilder
     {
+     //получение ранее созданного существующего пользователя, логин и пароль.
         public static UserModel GetStandartUser()
         {
             return new UserModel
@@ -18,6 +13,7 @@ namespace DIPLOM.Diplom.Core
                 Password = TestContext.Parameters.Get("StandartPassword"),
             };
         }
+        //получение случайного пользователя, логин и пароль.
         public static UserModel GetRandomUser()
         {
             return new UserModel
@@ -26,7 +22,7 @@ namespace DIPLOM.Diplom.Core
                 Password = Faker.Phone.Number(),
             };
         }
-
+        //получение данных для регистрации Имя Фамилия Пароль
         public static UserModel GetNewUser()
         {
             return new UserModel
@@ -36,6 +32,7 @@ namespace DIPLOM.Diplom.Core
                 Password = Faker.Address.UkPostCode(),
             };
         }
+        //получение пароля для существующего пользователя, и пустого имени пользователя
         public static UserModel GetStandartUserWithoutName()
         {
             return new UserModel
@@ -44,6 +41,7 @@ namespace DIPLOM.Diplom.Core
                 Password = TestContext.Parameters.Get("StandartPassword"),
             };
         }
+        //получение данных для регистрации пользователя  Имя, Фамилия, Адрес, Почта, Город, Домашний телефон, Мобильный телефон, Полный адрес.
         public static UserModel GetDataUserForRegistration()
         {
             return new UserModel

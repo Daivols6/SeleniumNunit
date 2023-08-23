@@ -11,9 +11,6 @@ namespace Diplom.Diplom.Core
         private static Browser instance = null;
         private IWebDriver driver;
         public IWebDriver Driver { get { return driver; } }
-
-
-
         public static Browser Instatce
         {
             get
@@ -25,14 +22,11 @@ namespace Diplom.Diplom.Core
                 return instance;
             }
         }
-
         private Browser()
-        {
-
+        {   //Открыть браузер в полном окне с неявным ожиданием, параметры указаны в runsettings
             var isHeadless = bool.Parse(TestContext.Parameters?.Get("Headless"));
             var Wait = int.Parse(TestContext.Parameters?.Get("ImplicityWait"));
             var browser = TestContext.Parameters?.Get("BrowserType");
-
             switch (browser)
             {
                 case "Chrome":
@@ -57,40 +51,41 @@ namespace Diplom.Diplom.Core
                     driver = new ChromeDriver();
                     break;
             }
-
-
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(Wait);
             driver.Manage().Window.Maximize();
-
         }
+        //Закрыть браузер
         public void CloseBrowser()
         {
             driver.Dispose();
-
             instance = null;
         }
-
+        //Переход на переднанную страницу 
         public void NavigateToUrl(string url)
         {
             driver.Navigate().GoToUrl(url);
         }
+        //Подтверждение на всплывающем окне
         public void AcceptAllert()
         {
             driver.SwitchTo().Alert().Accept();
         }
+        //Отклонить во всплывающем окне
         public void DissmissAllert()
         {
             driver.SwitchTo().Alert().Dismiss();
         }
-
+        //Переключиться в Iframe
         public void SwitchToFrame(IWebElement id)
         {
             driver.SwitchTo().Frame(id);
         }
+        //Возврат на базовую страницу из iframe
         public void SwitchToDefault()
         {
             driver.SwitchTo().DefaultContent();
         }        
+        //Метод для наведения мыши на элемент и клик правой кнопкой
         public void ContextClickToElement(IWebElement element)
         {
             var action = new Actions(driver)
@@ -99,6 +94,23 @@ namespace Diplom.Diplom.Core
            .Build();
                 action.Perform();
         }
+        //Метод для наведения мыши на элемент и клик левой кнопкой
+        public static void ClickToElement(IWebElement element)
+        {
+            var action = new Actions(Browser.Instatce.driver)
+           .MoveToElement(element)
+           .Click()
+           .Build();
+                action.Perform();
+        }
+        //Метод для наведения мыши на элемент
+        public static void MoveToElementOnPage(IWebElement element)
+        {
+            var action = new Actions(Browser.Instatce.driver)
+           .MoveToElement(element);
+                action.Perform();
+        }
+        //Выполнить переданный JS
         public object ExecuteScript(string script, object argument = null)
         {
             try
@@ -109,8 +121,6 @@ namespace Diplom.Diplom.Core
             {
                 return null;
             }
-
         }
-
     }
 }

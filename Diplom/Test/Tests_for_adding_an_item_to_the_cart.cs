@@ -2,29 +2,19 @@
 using DIPLOM.Diplom.Core;
 using DIPLOM.Diplom.PageObject;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DIPLOM.Diplom.Test
 {
-    internal class AddToCard : BaseTests
+    internal class Tests_for_adding_an_item_to_the_cart : BaseTests
     {
-        [Test]
+        [Test(Description = "Logging in by an existing user and adding an item to the cart")]
         public void AddCard()
         {
             new LoginPage().OpenPage()
                 .LoginAsStandartUser();
             new HomePage()
                 .GoHomePage()
-                .LoginAsStandartUserAndAddToCard();
-            
-
-
-
-
+                .AddToCard();
         }
     }
 }
