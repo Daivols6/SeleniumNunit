@@ -12,12 +12,16 @@
 
   <ItemGroup>
     <None Remove="allureConfig.json" />
+    <None Remove="azure-pipelines.yml" />
     <None Remove="C:\Users\XE\.nuget\packages\nlog.config\4.7.15\contentFiles\any\any\NLog.config" />
     <None Remove="Diplom\Core\runsettings\BrowserSetUp.runsettings" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="allureConfig.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="azure-pipelines.yml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="C:\Users\XE\.nuget\packages\nlog.config\4.7.15\contentFiles\any\any\NLog.config">
