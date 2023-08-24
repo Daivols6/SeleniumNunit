@@ -8,6 +8,7 @@ namespace DIPLOM.Diplom.Core.Elements
         public DropDown(By locator) : base(locator)
         {
         }
+        
         public DropDown(string name) : base($"[id='{name}']")
         {
         }
@@ -27,12 +28,14 @@ namespace DIPLOM.Diplom.Core.Elements
             }
             button.Click();
         }
+        
         public void SelectByValue(By locator, string value)
         {
             var webElement = WebDriver.FindElement(locator);
             var select = new SelectElement(webElement); ;
             select.SelectByValue(value);
         }
+        
         public void SelectByIndexNumber(By locator, int value)
         {
             var webElement = WebDriver.FindElement(locator);

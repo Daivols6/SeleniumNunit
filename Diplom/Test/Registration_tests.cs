@@ -19,10 +19,12 @@ namespace DIPLOM.Diplom.Test
         [AllureTms("TMS-16")]
         [AllureIssue("JIRA-15")]
         [AllureLink("https://github.com/Daivols6/SeleniumNunit")]
+        
         public void Create()
         {
             new RegistrationPageWithBaseElement().NewUser();
         }
+        
         [Test(Description = "Authorization of an already created account")]
         public void Registration()
         {
@@ -30,6 +32,7 @@ namespace DIPLOM.Diplom.Test
             .OpenPage()
             .LoginAsStandartUser();
         }
+
         [Test(Description = "creating a user with a new mail")]
         public void CreateUser()
         {

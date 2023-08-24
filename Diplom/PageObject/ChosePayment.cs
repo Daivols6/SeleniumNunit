@@ -8,16 +8,21 @@ namespace DIPLOM.Diplom.PageObject
     internal class ChosePayment : BasePage
     {
         private By AlertWarning = By.CssSelector(".alert-warning");
+        
         public ChosePayment() : base()
         {
         }
+       
         public override BasePage OpenPage()
         {
             driver.Navigate().GoToUrl(LoginPage.url);
             logger.Info($"Open page{LoginPage.url}");
             return this;
         }
-        // Проверка есть ли сообщение об ошибке на странице
+
+        ///<summary>
+        /// Проверка есть ли сообщение об ошибке на странице
+        ///</summary>
         public void CheckWarning()
         {
             var element = driver.FindElement(AlertWarning);

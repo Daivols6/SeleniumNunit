@@ -5,6 +5,7 @@ using OpenQA.Selenium;
 using NUnit.Allure.Attributes;
 using DIPLOM.Diplom.Core.Configuration;
 using NUnit.Framework;
+using Diplom.Diplom.Core;
 
 namespace DIPLOM.Diplom.PageObject
 {
@@ -16,9 +17,13 @@ namespace DIPLOM.Diplom.PageObject
         private Input LoginButton = new(By.Id("SubmitLogin"));
         private Button CreateAccountButton = new(By.Id("SubmitCreate"));
         public const string url = "http://prestashop.qatestlab.com.ua/ru/authentication?back=my-account";
+        private By LKUserLogin = By.XPath("//span[text()='Roman Romanov']");
+        private By PageCreateAcc = By.CssSelector(".page-subheading");
+
         public LoginPageWithBaseElement() : base()
         {
         }
+        
         [AllureStep("Открыть страницу авторизации")]
         public override LoginPageWithBaseElement OpenPage()
         {
@@ -27,8 +32,12 @@ namespace DIPLOM.Diplom.PageObject
 
             return this;
         }
+
+        ///<summary>
+        /// Авторизация заранее созданным пользователем
+        ///</summary>
+        /// <returns></returns>
         [AllureStep("Авторизация стандартным пользователем")]
-        //Авторизация заранее созданным пользователем
         public LoginPageWithBaseElement LoginToAccount()
         {
             UserName.GetElement().SendKeys(UserBuilder.GetStandartUser().Name);
@@ -38,12 +47,15 @@ namespace DIPLOM.Diplom.PageObject
             LoginButton.GetElement().Click();
             logger.Info($"Logining");
             logger.Info($"Check element on page");
-            var element = driver.FindElement(By.XPath("//span[text()='Roman Romanov']"));
-            Assert.IsTrue(element.Displayed, "Элемент не найден на странице");
+            Assert.IsTrue(CheckElementOnPage(LKUserLogin), "Элемент не найден на странице");
             return this;
         }
+
+        ///<summary>
+        ///Ввод случайного email и нажатие кнопки создать аккаунт
+        ///</summary>
+        /// <returns></returns>
         [AllureStep("Создание нового случайного пользователя")]
-        //Ввод случайного email и нажатие кнопки создать аккаунт
         public LoginPageWithBaseElement CreateNewUser()
         {
             logger.Info($"Open page{url}");
@@ -51,6 +63,7 @@ namespace DIPLOM.Diplom.PageObject
             logger.Info($"input email");
             EmailInput.GetElement().SendKeys(UserBuilder.GetRandomUser().Email);
             CreateAccountButton.GetElement().Click();
+            Assert.IsTrue(CheckElementOnPage(PageCreateAcc), "Элемент не найден на странице");
             logger.Info($"Click on button Create Account");
             return this;
         }

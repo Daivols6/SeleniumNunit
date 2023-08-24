@@ -13,11 +13,11 @@ namespace DIPLOM.Diplom.Core
         public void SetUp()
         {          
         }
+        
         [TearDown]
         public void TearDown()
         {  
             AllureHelper.ScreenShotIfTestFailed();
-            //Закрыть браузер освободить память
             Browser.Instatce.CloseBrowser();
         }
     }

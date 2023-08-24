@@ -21,6 +21,7 @@ namespace DIPLOM.Diplom.Test
                          .AgreePayment()
                          .CheckSuccessMessage();
         }
+        
         [Test(Description = "Negative test. When buying in a US country, there are no payment methods")]
         public void End2EndCheckoutUSA()
         {

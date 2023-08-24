@@ -4,7 +4,10 @@ namespace DIPLOM.Diplom.Core
 {
     public class UserBuilder
     {
-     //получение ранее созданного существующего пользователя, логин и пароль.
+        ///<summary>
+        /// получение ранее созданного существующего пользователя, логин и пароль.
+        ///</summary>
+        /// <returns></returns>
         public static UserModel GetStandartUser()
         {
             return new UserModel
@@ -13,7 +16,11 @@ namespace DIPLOM.Diplom.Core
                 Password = TestContext.Parameters.Get("StandartPassword"),
             };
         }
-        //получение случайного пользователя, логин и пароль.
+
+        ///<summary>
+        /// получение случайного пользователя, логин и пароль.
+        ///</summary>
+        /// <returns></returns>
         public static UserModel GetRandomUser()
         {
             return new UserModel
@@ -22,7 +29,11 @@ namespace DIPLOM.Diplom.Core
                 Password = Faker.Phone.Number(),
             };
         }
-        //получение данных для регистрации Имя Фамилия Пароль
+
+        ///<summary>
+        /// получение данных для регистрации Имя Фамилия Пароль
+        ///</summary>
+        /// <returns></returns>
         public static UserModel GetNewUser()
         {
             return new UserModel
@@ -32,7 +43,11 @@ namespace DIPLOM.Diplom.Core
                 Password = Faker.Address.UkPostCode(),
             };
         }
-        //получение пароля для существующего пользователя, и пустого имени пользователя
+
+        ///<summary>
+        /// получение пароля для существующего пользователя, и пустого имени пользователя
+        ///</summary>
+        /// <returns></returns>
         public static UserModel GetStandartUserWithoutName()
         {
             return new UserModel
@@ -41,7 +56,11 @@ namespace DIPLOM.Diplom.Core
                 Password = TestContext.Parameters.Get("StandartPassword"),
             };
         }
-        //получение данных для регистрации пользователя  Имя, Фамилия, Адрес, Почта, Город, Домашний телефон, Мобильный телефон, Полный адрес.
+
+        ///<summary>
+        /// получение данных для регистрации пользователя  Имя, Фамилия, Адрес, Почта, Город, Домашний телефон, Мобильный телефон, Полный адрес.
+        ///</summary>
+        /// <returns></returns>
         public static UserModel GetDataUserForRegistration()
         {
             return new UserModel

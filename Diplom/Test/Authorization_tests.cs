@@ -14,6 +14,7 @@ namespace DIPLOM.Diplom.Test
                 .OpenPage()
                 .LoginToAccount();
         }
+        
         [Test(Description = "Authorization without specifying mail, but with an existing password")]
         public void LoginUserWithoutName()
         {
@@ -21,6 +22,7 @@ namespace DIPLOM.Diplom.Test
             .OpenPage()
             .StandartUserWithoutName();
         }
+        
         [Test(Description = "Attempt to log in with a random email and password")]
         public void RandomUserTest()
         {
@@ -28,6 +30,7 @@ namespace DIPLOM.Diplom.Test
             .OpenPage()
             .RandomUser();
         }
+        
         [Test(Description = "Login under the user created in advance")]
         public void LoginStandartUser()
         {
@@ -35,6 +38,5 @@ namespace DIPLOM.Diplom.Test
             .OpenPage()
             .LoginAsStandartUser();
         }
-
     }
 }

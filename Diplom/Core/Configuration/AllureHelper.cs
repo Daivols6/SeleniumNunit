@@ -14,7 +14,9 @@ namespace DIPLOM.Diplom.Core.Configuration
     internal class AllureHelper
     {
         private static AllureLifecycle allure = AllureLifecycle.Instance;
-
+        ///<summary>
+        /// Делает скрин в случае падения теста
+        ///</summary>
         public static void ScreenShotIfTestFailed()
         {
             if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)

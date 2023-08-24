@@ -7,9 +7,9 @@ namespace DIPLOM.Diplom.Core.Elements
         public Button(By locator) : base(locator)
         {
         }
+        
         public Button(string locator) : base($"[id='{locator}']")
         {
-        }
-        
+        }       
     }
 }

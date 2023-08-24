@@ -13,10 +13,34 @@ namespace Diplom.Diplom.PageObject
     {
         protected IWebDriver driver;
         protected static Logger logger = LogManager.GetCurrentClassLogger();
+        
         public BasePage()
         {
             driver = Browser.Instatce.Driver;
         }
+        
         public abstract BasePage OpenPage();
+
+
+        ///<summary>
+        /// Проверка что элемент есть на странице
+        ///</summary>
+        public bool CheckElementOnPage(By locator)
+        {
+            try
+            {
+                var element = driver.FindElement(locator);
+                return element.Displayed;
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ошибка при поиске элемента: " + ex.Message);
+                return false;
+            }
+        }
     }
 }

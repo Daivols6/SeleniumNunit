@@ -7,6 +7,7 @@ namespace DIPLOM.Diplom.Core.Elements
         public Input(By locator): base(locator)
         {
         }
+        
         public Input(string locator): base($"//input[@name='{locator}']")
         {
         }

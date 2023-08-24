@@ -22,11 +22,16 @@ namespace DIPLOM.Diplom.PageObject
         private Button SaveAndContinue = new(By.Id("submitAccount"));
         private UserModel newUser = UserBuilder.GetNewUser();
         public string URL = "http://prestashop.qatestlab.com.ua/ru/authentication?back=my-account#account-creation";
+        
         public RegistrationPageWithBaseElement() : base()
         {
         }
+
+        ///<summary>
+        ///Заполнение данных на странице "YOUR PERSONAL INFORMATION"
+        ///</summary>
+        /// <returns></returns>
         [AllureStep("Registration for new user")]
-        //Заполнение данных на странице "YOUR PERSONAL INFORMATION"
         public RegistrationPageWithBaseElement NewUser()
         {
             new LoginPageWithBaseElement().CreateNewUser();
@@ -50,6 +55,7 @@ namespace DIPLOM.Diplom.PageObject
             logger.Info($"Element found on page");
             return new RegistrationPageWithBaseElement();
         }
+        
         [AllureStep]
         public override BasePage OpenPage()
         {

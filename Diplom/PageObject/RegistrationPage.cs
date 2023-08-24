@@ -23,11 +23,16 @@ namespace DIPLOM.Diplom.PageObject
         private By addressTitle = By.CssSelector("#alias");
         private readonly int Digit = new Random().Next(1, 7);
         public string URL = "http://prestashop.qatestlab.com.ua/ru/";
+       
         public RegistrationPage() : base()
         {
         }
+
+        ///<summary>
+        ///Заполнение данных пользователя на вкладке YOUR ADDRESSES с указанием случайного Штата и страны под индексом 1
+        ///</summary>
+        /// <returns></returns>
         [AllureStep("Input Address for User")]
-        //Заполнение данных пользователя на вкладке YOUR ADDRESSES с указанием случайного Штата и страны под индексом 1
         public RegistrationPage EnterAddressforUser()
         {
             new DropDown().SelectByIndexNumber(Country, 1);
@@ -56,8 +61,12 @@ namespace DIPLOM.Diplom.PageObject
             logger.Info($"Click on button SaveAndContinue");
             return new RegistrationPage();
         }
+
+        ///<summary>
+        ///Заполнение данных пользователя на вкладке YOUR ADDRESSES с указанием случайного Штата, страна остается выбранная по умолчанию(Index(0))
+        ///</summary>
+        /// <returns></returns>
         [AllureStep]
-        //Заполнение данных пользователя на вкладке YOUR ADDRESSES с указанием случайного Штата, страна остается выбранная по умолчанию(Index(0))
         public RegistrationPage EnterAddressUSAforUser()
         {
             new DropDown().SelectByIndexNumber(State, Digit);
@@ -84,6 +93,7 @@ namespace DIPLOM.Diplom.PageObject
             logger.Info($"Click on button SaveAndContinue");
             return new RegistrationPage();
         }
+        
         public override BasePage OpenPage()
         {
             driver.Navigate().GoToUrl(URL);

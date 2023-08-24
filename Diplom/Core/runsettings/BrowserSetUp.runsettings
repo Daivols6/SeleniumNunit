@@ -3,7 +3,7 @@
 	<TestRunParameters>
 		<Parameter name ="Headless" value="false"/>
 		<Parameter name ="BrowserType" value="Chrome"/>
-		<Parameter name ="ImplicityWait" value="50"/>
+		<Parameter name ="ImplicityWait" value="10"/>
 		<Parameter name ="StandartUserName" value="testRoman@email.ru"/>
 		<Parameter name ="StandartPassword" value="12345"/>
 	</TestRunParameters>

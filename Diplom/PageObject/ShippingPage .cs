@@ -9,15 +9,18 @@ namespace DIPLOM.Diplom.PageObject
     internal class ShippingPage : BasePage
     {
         private By Agree = By.CssSelector("#cgv");
+        
         public ShippingPage() : base()
         {
         }
+        
         public override BasePage OpenPage()
         {
             driver.Navigate().GoToUrl(LoginPage.url);
             logger.Info($"Open page{LoginPage.url}");
             return this;
         }
+        
         public void SetCheckBoxState(IWebElement element, bool flag = false)
         {
             var selected = element.Selected;
@@ -26,8 +29,11 @@ namespace DIPLOM.Diplom.PageObject
                 element.Click();
             }
         }
+
+        ///<summary>
+        ///Отметить чек-бокс согласие с условиями на вкладке Shipping
+        ///</summary>
         [AllureStep]
-        //Отметить чек-бокс согласие с условиями на вкладке Shipping
         public void AgreeAndCheckout()
         {
             new Button(Agree).GetElement().Click();

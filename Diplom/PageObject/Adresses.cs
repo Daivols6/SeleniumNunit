@@ -9,9 +9,11 @@ namespace DIPLOM.Diplom.PageObject
     internal class Adresses : BasePage
     {
         private By ProceedToCheckout = By.CssSelector("button.button-medium");
+        
         public Adresses() : base()
         {
         }
+        
         [AllureStep]
         public override BasePage OpenPage()
         {
@@ -19,12 +21,14 @@ namespace DIPLOM.Diplom.PageObject
             logger.Info($"Open page{LoginPage.url}");
             return this;
         }
-        //Нажать на кнопку Продолжить оформление заказа на влкаде Address
+
+        ///<summary>
+        /// Нажать на кнопку Продолжить оформление заказа на влкаде Address
+        ///</summary>
         public void Checkout()
         {
             new Button(ProceedToCheckout).GetElement().Click();
             logger.Info($"Click on button ProceedToCheckout");
-
         }
     }
 }

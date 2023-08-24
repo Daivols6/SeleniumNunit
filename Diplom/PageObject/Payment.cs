@@ -3,6 +3,7 @@ using Diplom.Diplom.PageObject;
 using NUnit.Allure.Attributes;
 using OpenQA.Selenium;
 using NUnit.Framework;
+using Diplom.Diplom.Core;
 
 namespace DIPLOM.Diplom.PageObject
 {
@@ -23,44 +24,57 @@ namespace DIPLOM.Diplom.PageObject
             logger.Info($"Open page{url}");
             return this;
         }
-        //Выбор оплаты банковским платежем
+        ///<summary>
+        /// Выбор оплаты банковским платежем
+        ///</summary>
+        /// <returns></returns>
         public Payment ChoisePaymentByBankTransfer()
         {
             driver.FindElement(PaymentByBankTransfer).Click();
             logger.Info($"Payment By Bank Transfer");
             return new Payment();
         }
-        //Выбор способа оплаты на вкладке Payment
+        ///<summary>
+        /// Выбор способа оплаты чеком
+        ///</summary>
+        /// <returns></returns>
         public Payment ChoisePaymentByCheck()
         {
             driver.FindElement(PaymentByCheck).Click();
             logger.Info($"Payment By Check");
             return new Payment();
         }
-        //Подтверждение оплаты
+        ///<summary>
+        /// Подтверждение покупки
+        ///</summary>
+        /// <returns></returns>
         public Payment AgreePayment()
         {
             driver.FindElement(AgreePay).Click();
             logger.Info($"Agree And Checkout");
             return new Payment();
         }
+
+        ///<summary>
+        /// Проверка что заказ оформлен, поиск сообщения об успешно оформленном заказе.
+        ///</summary>
+        /// <returns></returns>
         [AllureStep]
-        //Проверка что заказ оформлен, поиск сообщения об успешно оформленном заказе.
         public Payment CheckSuccessMessage()
         {
-            // Поиск элемента на старнице.
-            var element = driver.FindElement(successMessage);
-            Assert.IsTrue(element.Displayed, "Элемент не найден на странице");
+            Assert.IsTrue(CheckElementOnPage(successMessage), "Элемент не найден на странице");
             logger.Info($"Element found on page");
             return new Payment();
         }
+
+        ///<summary>
+        ///Поиск сообщения об ошибке
+        ///</summary>
+        /// <returns></returns>
         [AllureStep]
-        //Поиск сообщения об ошибке
         public Payment CheckErrorMessage()
         {
-            // Поиск элемента на старнице.
-            var element = driver.FindElement(erorrMessage);
-            Assert.IsTrue(element.Displayed, "Элемент не найден на странице");
+            Assert.IsTrue(CheckElementOnPage(erorrMessage), "Элемент не найден на странице");
             logger.Info($"Element found on page");
             return new Payment();
         }

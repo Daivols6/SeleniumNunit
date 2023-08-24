@@ -3,6 +3,7 @@ using Diplom.Diplom.PageObject;
 using DIPLOM.Diplom.Core.Configuration;
 using DIPLOM.Diplom.Core.Elements;
 using NUnit.Allure.Attributes;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using System.Xml.Linq;
@@ -16,12 +17,18 @@ namespace DIPLOM.Diplom.PageObject
         private By AlertCheckoutButton = By.XPath("//*[@id=\"layer_cart\"]/div[1]/div[2]/div[4]/a/span");
         private By AddToCart = By.XPath("//*[@id=\"add_to_cart\"]/button");
         private By AlertIframe = By.XPath("//*[@id=\"homefeatured\"]/li[2]/div/div[1]/div/a[2]/span");
+        private By AddToCardButton = By.CssSelector(".button-medium");
         private By Home = By.CssSelector(".banner");
+        
         public HomePage() : base()
         {
         }
+        
+        ///<summary>
+        /// Добавление товара в корзину через кнопку AddToCard и переход к оформлению заказа
+        ///</summary>
+        /// <returns></returns>
         [AllureStep]
-        //Добавление товара в корзину через кнопку AddToCard и переход к оформлению заказа
         public HomePage GoToShoppingCart()
         {
             IWebElement Product = driver.FindElement(By.CssSelector(".first-item-of-mobile-line"));
@@ -36,8 +43,12 @@ namespace DIPLOM.Diplom.PageObject
 
             return new HomePage();
         }
+
+        ///<summary>
+        /// Добавление товара в корзину через наведение на товар нажатие QuickView, переход в Iframe и нажатие кнопки AddToCard
+        ///</summary>
+        /// <returns></returns>
         [AllureStep]
-        //Добавление товара в корзину через наведение на товар нажатие QuickView, переход в Iframe и нажатие кнопки AddToCard
         public HomePage AddToCard()
         {
             IWebElement QuickView = Browser.Instatce.Driver.FindElement(By.CssSelector("#homefeatured > li:nth-child(2)"));
@@ -49,8 +60,10 @@ namespace DIPLOM.Diplom.PageObject
             logger.Info($"Click on buuton in Iframe");
             driver.FindElement(AddToCart).Click();
             logger.Info($"Product add to cart");
+            Assert.IsTrue(CheckElementOnPage(AddToCardButton), "Элемент не найден на странице");
             return new HomePage();
         }
+        
         [AllureStep]
         public override BasePage OpenPage()
         {
@@ -58,8 +71,12 @@ namespace DIPLOM.Diplom.PageObject
             logger.Info($"Open page {LoginPage.url}");
             return this;
         }
+
+        ///<summary>
+        ///Возврат на домашнюю страницу
+        ///</summary>
+        /// <returns></returns>
         [AllureStep("Переход на домашнюю страницу")]
-        //Возврат на домашнюю страницу
         public HomePage GoHomePage()
         {
             new BaseElement(Home).GetElement().Click();
