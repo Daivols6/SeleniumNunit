@@ -34,7 +34,7 @@
   <ItemGroup>
     <PackageReference Include="Bogus" Version="34.0.2" />
     <PackageReference Include="Faker.Net" Version="2.0.154" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
     <PackageReference Include="NLog" Version="5.2.3" />
     <PackageReference Include="NLog.Config" Version="4.7.15" />
     <PackageReference Include="NUnit" Version="3.13.3" />
